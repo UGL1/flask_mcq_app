@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>MCQ</title>
+    <meta charset="UTF-8">
+
+    {#bootstrap#}
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
+    {#codemirror#}
+    <script src="{{ url_for('static', filename='js/highlight.js') }}"></script>
+    <link href="{{ url_for('static', filename='/css/codemirror.css') }}" rel="stylesheet">
+
+    {#mcq script#}
+    <script src="{{ url_for('static', filename='js/mcq.js') }}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body style="background-image: url('{{ url_for('static',filename='img/bg.webp') }}');">
+
+{#page header#}
+<div class="container rounded-3 p-5  my-5 bg-primary text-white shadow-lg border" id="pageTitle">
+    <h1 class="display-1">{{ page_title }}</h1>
+    <h1 class="display-6">{{ page_subtitle }}</h1>
+</div>
+
+{#questions#}
+{% block content %}{% endblock %}
+
+{#validation#}
+<div class="container my-5 text-center" id="submit">
+    <button id="validation" type="button" class="btn-primary rounded-3 px-5 py-3 display-6 shadow-lg"
+            onclick="submitMCQ2(this.id)">
+        Terminer
+    </button>
+</div>
+</body>
+
+{#<pre>#}
+{#<code class="python">#}
+{#def f(x):#}
+{#    pass#}
+{#</code></pre>#}
+
+</html>
