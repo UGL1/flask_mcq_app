@@ -12,12 +12,15 @@ def hello_world():  # put application's code here
         "questions": [
             {
                 "question_number": "01",
-                "question_text": "soso",
+                "question_text": """<pre><code class="python-code">
+def f(x : int) -> int:
+    return x ** 2 + 2 * x + 1</code></pre>""",
                 "answer": [1, "fehn", "truc", "bibi"]
             },
             {
                 "question_number": "02",
-                "question_text": "caoiuoiuc",
+                "question_text": """<pre><code class="python-code">
+print(f"Salut {codo}")</code></pre>""",
                 "answer": ["popo", "fehn", "truc", "bibi"]
             },
             {
@@ -37,7 +40,7 @@ def hello_world():  # put application's code here
             },
         ]
     }
-    return render_template("mcq.html", **kwargs)  # kwargs better be well formatted !
+    return render_template("mcq2.html", **kwargs)  # kwargs better be well formatted !
 
     # return render_template("tmpl1.html", **kwargs) # kwargs better be well formatted !
 

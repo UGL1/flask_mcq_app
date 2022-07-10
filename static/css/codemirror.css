@@ -3,6 +3,7 @@
     overflow-x: auto;
     padding: .5em;
     background: #f8f9fa;
+    font-size: 1.25rem;
 }
 
 .hljs, .hljs-subst {

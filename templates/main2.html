@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>MCQ</title>
+    <meta charset="UTF-8">
+
+    {#bootstrap#}
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
+    {#codemirror#}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/lib/codemirror.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/addon/runmode/runmode-standalone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/mode/python/python.min.js"></script>
+
+    {#mcq script#}
+    <script src="{{ url_for('static', filename='js/mcq.js') }}"></script>
+
+    {#extra css#}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/extra.css') }}">
+</head>
+
+<body style="background-image: url('{{ url_for('static',filename='img/bg.webp') }}'); background-attachment: fixed;">
+
+{#page header#}
+<div class="container rounded-3 p-5  my-5 bg-primary text-white shadow-lg border" id="pageTitle">
+    <h1 class="display-1">{{ page_title }}</h1>
+    <h1 class="display-6">{{ page_subtitle }}</h1>
+</div>
+
+{#questions#}
+{% block content %}{% endblock %}
+
+{#validation#}
+<div class="container my-5 text-center" id="submit">
+    <button id="validation" type="button" class="btn-primary rounded-3 px-5 py-3 display-6 shadow-lg"
+            onclick="submitMCQ2(this.id)">
+        Terminer
+    </button>
+</div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        const collection = document.getElementsByClassName("python-code")
+        for (let codeElement of collection) {
+            codeElement.classList.add('cm-s-default');
+            const code = codeElement.innerText;
+            codeElement.innerHTML = "";
+            CodeMirror.runMode(
+                code,
+                'python',
+                codeElement
+            );
+        }
+    };
+</script>
+</body>
+
+{#<pre>#}
+{#<code class="python">#}
+{#def f(x):#}
+{#    pass#}
+{#</code></pre>#}
+
+
+</html>
