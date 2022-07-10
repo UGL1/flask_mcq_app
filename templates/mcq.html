@@ -1,25 +1,27 @@
 {% extends "main.html" %}
 {% block content %}
+    {% for item in questions %}
     <div class="container rounded-3 p-5  my-5 bg-light text-black shadow-lg border">
-        <h1 class="display-6">Question 01</h1>
-        <p>{{ question_text }}</p>
+        <h1 class="display-6">Question {{ item.question_number }}</h1>
+        <p>{{ item.question_text }}</p>
         <div class="form-check mt-4">
             <input type="radio" class="form-check-input"
-                   id={{ "q"+question_number+"-01" }} name={{ "q"+question_number }} onclick="choice=1;">
-            <label for="q01-01" class="form-check-label" id={{ "q"+question_number+"-01l" }}>{{ answer[0] }}</label><br>
+                   id={{ "q"+item.question_number+"-01" }} name={{ "q"+item.question_number }} onclick="choice=1;">
+            <label for={{ "q"+item.question_number+"-01" }} class="form-check-label" id={{ "q"+item.question_number+"-01l" }}>{{ item.answer[0] }}</label><br>
             <input type="radio" class="form-check-input"
-                   id={{ "q"+question_number+"-02" }} name={{ "q"+question_number }} onclick="choice=2;">
-            <label for="q01-02" class="form-check-label" id={{ "q"+question_number+"-02l" }}>{{ answer[1] }}</label><br>
+                   id={{ "q"+item.question_number+"-02" }} name={{ "q"+item.question_number }} onclick="choice=2;">
+            <label for={{ "q"+item.question_number+"-02" }} class="form-check-label" id={{ "q"+item.question_number+"-02l" }}>{{ item.answer[1] }}</label><br>
             <input type="radio" class="form-check-input"
-                   id={{ "q"+question_number+"-03" }} name={{ "q"+question_number }} onclick="choice=3;">
-            <label for="q01-03" class="form-check-label" id={{ "q"+question_number+"-03l" }}>{{ answer[2] }}</label><br>
+                   id={{ "q"+item.question_number+"-03" }} name={{ "q"+item.question_number }} onclick="choice=3;">
+            <label for={{ "q"+item.question_number+"-03" }} class="form-check-label" id={{ "q"+item.question_number+"-03l" }}>{{ item.answer[2] }}</label><br>
             <input type="radio" class="form-check-input"
-                   id={{ "q"+question_number+"-04" }} name={{ "q"+question_number }} onclick="choice=4;">
-            <label for="q01-04" class="form-check-label" id={{ "q"+question_number+"-04l" }}>{{ answer[3] }}</label><br><br>
+                   id={{ "q"+item.question_number+"-04" }} name={{ "q"+item.question_number }} onclick="choice=4;">
+            <label for={{ "q"+item.question_number+"-04" }} class="form-check-label" id={{ "q"+item.question_number+"-04l" }}>{{ item.answer[3] }}</label><br><br>
         </div>
         <button type="button" class="px-2 py-1 btn-primary rounded-3"
-                id={{ "q"+question_number }} onclick="validate(this.id)">Valider
+                id={{ "q"+item.question_number }} onclick="validate(this.id)">Valider
         </button>
     </div>
+    {% endfor %}
 
 {% endblock %}
